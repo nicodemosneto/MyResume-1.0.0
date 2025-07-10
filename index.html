@@ -242,7 +242,7 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
                 </svg>
                 <i class="bi bi-film"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <a href="javascript:void(0)" class="stretched-link motion-link">
                 <h3>Motion Design</h3>
               </a>
               <p>Crie narrativas em movimento. Peças rápidas, impactantes e perfeitas para converter leads no tráfego pago.</p>
@@ -362,130 +362,31 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-<!-- POPUPS -->
-<div id="popup-motion" class="popup">
-  <div class="popup-content">
-    <span class="close-btn" data-target="popup-motion">&times;</span>
-    <h3>Motion Design</h3>
-    <p>Transforme ideias em movimento. Aqui vão os formatos e valores base:</p>
-    <table style="width:100%; text-align:left; margin-top:1rem; border-collapse: collapse;">
-      <thead>
-        <tr>
-          <th style="border-bottom: 2px solid #ccc; padding: 8px;">Tipo</th>
-          <th style="border-bottom: 2px solid #ccc; padding: 8px;">Descrição</th>
-          <th style="border-bottom: 2px solid #ccc; padding: 8px;">Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding: 8px;">Animação 2D Simples</td>
-          <td style="padding: 8px;">Logo animado, textos e ícones</td>
-          <td style="padding: 8px;">R$ 300</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;">Storytelling Visual</td>
-          <td style="padding: 8px;">Roteiro + animação de cenas</td>
-          <td style="padding: 8px;">R$ 700</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px;">Frame a Frame</td>
-          <td style="padding: 8px;">Estilo Procreate Dreams</td>
-          <td style="padding: 8px;">R$ 1.200</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div id="popup-ilustra" class="popup">
-  <div class="popup-content">
-    <span class="close-btn" data-target="popup-ilustra">&times;</span>
-    <h3>Ilustração</h3>
-    <p>Transforme ideias em imagens únicas. Ideal pra livros, presentes ou posts que se destacam.</p>
-  </div>
-</div>
-
-<div id="popup-direcao" class="popup">
-  <div class="popup-content">
-    <span class="close-btn" data-target="popup-direcao">&times;</span>
-    <h3>Direção de Arte</h3>
-    <p>Posicione sua marca com estilo. Estratégia visual pra criar presença forte e coerente.</p>
-  </div>
-</div>
-
-<style>
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    padding-top: 80px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7);
-  }
-
-  .popup-content {
-    background-color: #fff;
-    margin: auto;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  }
-
-  .close-btn {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 26px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .close-btn:hover {
-    color: #000;
-  }
-
-  table {
-    font-size: 0.95rem;
-  }
-
-  th, td {
-    border-bottom: 1px solid #eee;
-  }
-</style>
-
 <script>
-  const openPopups = {
-    "item-orange": "popup-motion",
-    "item-teal": "popup-ilustra",
-    "item-red": "popup-direcao"
+  const links = {
+    "motion-link": "popup-motion",
+    "ilustra-link": "popup-ilustra",
+    "direcao-link": "popup-direcao"
   };
 
-  Object.keys(openPopups).forEach(className => {
-    const trigger = document.querySelector(`.${className}`);
-    const popupId = openPopups[className];
+  Object.keys(links).forEach(className => {
+    const el = document.querySelector(`.${className}`);
+    const popupId = links[className];
 
-    trigger.addEventListener("click", function(e) {
+    el.addEventListener("click", function (e) {
       e.preventDefault();
       document.getElementById(popupId).style.display = "block";
     });
   });
 
   document.querySelectorAll(".close-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
+    btn.addEventListener("click", function () {
       const target = this.getAttribute("data-target");
       document.getElementById(target).style.display = "none";
     });
   });
 
-  window.addEventListener("click", function(e) {
+  window.addEventListener("click", function (e) {
     document.querySelectorAll(".popup").forEach(popup => {
       if (e.target === popup) {
         popup.style.display = "none";
