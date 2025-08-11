@@ -360,8 +360,63 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- POPUPS -->
+<div id="popup-motion" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" data-target="popup-motion">&times;</span>
+    <p>Nico encontre aqui o texto</p>
+  </div>
+</div>
+
+<div id="popup-ilustra" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" data-target="popup-ilustra">&times;</span>
+    <p>Nico encontre aqui o texto</p>
+  </div>
+</div>
+
+<div id="popup-direcao" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" data-target="popup-direcao">&times;</span>
+    <p>Nico encontre aqui o texto</p>
+  </div>
+</div>
+
+<style>
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .popup-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .close-btn:hover {
+    color: #000;
+  }
+</style>
+
 <script>
   const links = {
     "motion-link": "popup-motion",
@@ -371,12 +426,13 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
 
   Object.keys(links).forEach(className => {
     const el = document.querySelector(`.${className}`);
-    const popupId = links[className];
-
-    el.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.getElementById(popupId).style.display = "block";
-    });
+    if (el) {
+      const popupId = links[className];
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById(popupId).style.display = "block";
+      });
+    }
   });
 
   document.querySelectorAll(".close-btn").forEach(btn => {
