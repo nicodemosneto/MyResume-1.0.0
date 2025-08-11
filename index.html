@@ -100,25 +100,6 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
 
     </section><!-- /About Section -->
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Habilidades</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="social-links d-flex justify-content-center">
-            <div class="col-lg-4">
-                <img src="assets/img/habilidades1.jpg" class="img-fluid" alt="Procreate Suite">
-            </div>
-        </div>
-      </div>
-
-    </section><!-- /Skills Section -->
-
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -261,7 +242,7 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
                 </svg>
                 <i class="bi bi-film"></i>
               </div>
-              <a href="#" class="stretched-link">
+              <a href="javascript:void(0)" class="stretched-link motion-link">
                 <h3>Motion Design</h3>
               </a>
               <p>Crie narrativas em movimento. Peças rápidas, impactantes e perfeitas para converter leads no tráfego pago.</p>
@@ -381,6 +362,97 @@ Quando não estou criando no digital, me aventuro no artesanato — tricô, croc
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+          
+<!-- POPUPS -->
+<div id="popup-motion" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" data-target="popup-motion">&times;</span>
+    <p>Nico encontre aqui o texto</p>
+  </div>
+</div>
+
+<div id="popup-ilustra" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" data-target="popup-ilustra">&times;</span>
+    <p>Nico encontre aqui o texto</p>
+  </div>
+</div>
+
+<div id="popup-direcao" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" data-target="popup-direcao">&times;</span>
+    <p>Nico encontre aqui o texto</p>
+  </div>
+</div>
+
+<style>
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .popup-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .close-btn:hover {
+    color: #000;
+  }
+</style>
+
+<script>
+  const links = {
+    "motion-link": "popup-motion",
+    "ilustra-link": "popup-ilustra",
+    "direcao-link": "popup-direcao"
+  };
+
+  Object.keys(links).forEach(className => {
+    const el = document.querySelector(`.${className}`);
+    if (el) {
+      const popupId = links[className];
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById(popupId).style.display = "block";
+      });
+    }
+  });
+
+  document.querySelectorAll(".close-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const target = this.getAttribute("data-target");
+      document.getElementById(target).style.display = "none";
+    });
+  });
+
+  window.addEventListener("click", function (e) {
+    document.querySelectorAll(".popup").forEach(popup => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+      }
+    });
+  });
+</script>
 
 </body>
 
